@@ -8,7 +8,6 @@ export default function BullyListeningParty() {
   const [currentTime, setCurrentTime] = useState(0);
   const [showRoblox, setShowRoblox] = useState(false);
 
-  // Fake album timer
   useEffect(() => {
     let interval: NodeJS.Timeout;
     if (isPlaying) {
@@ -28,112 +27,112 @@ export default function BullyListeningParty() {
   const togglePlay = () => {
     setIsPlaying(!isPlaying);
     if (!isPlaying) {
-      setTimeout(() => setShowRoblox(true), 700);
+      setTimeout(() => setShowRoblox(true), 800);
     }
   };
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-hidden relative flex items-center justify-center">
-      {/* Subtle background stars */}
-      <div className="absolute inset-0 bg-[radial-gradient(#ffffff12_0.8px,transparent_1px)] bg-[length:50px_50px]" />
+    <div className="min-h-screen bg-black text-white flex items-center justify-center overflow-hidden relative">
+      {/* Background effect */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#ffffff15_0%,transparent_70%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(#ffffff10_1px,transparent_1px)] bg-[length:60px_60px]" />
 
-      <div className="relative z-10 text-center px-6 max-w-2xl mx-auto">
+      <div className="relative z-10 text-center px-6 py-12 max-w-3xl mx-auto">
         {/* Top Star */}
-        <div className="mb-8">
-          <div className="inline-block text-[140px] leading-none text-white/90 drop-shadow-2xl">★</div>
+        <div className="mb-10">
+          <div className="text-[160px] leading-[0.8] text-white tracking-[-10px] drop-shadow-2xl">★</div>
         </div>
 
-        {/* Main Title */}
-        <div className="mb-6">
-          <div className="text-[92px] md:text-[110px] font-black tracking-[-4px] leading-none mb-2">
+        {/* Main Title - Much bigger and bolder */}
+        <div className="mb-8">
+          <h1 className="text-[110px] md:text-[140px] font-black tracking-[-6px] leading-none text-white">
             BULLY
-          </div>
-          <div className="text-5xl md:text-6xl font-bold tracking-[4px] text-white/80">
+          </h1>
+          <div className="text-[42px] md:text-[56px] font-bold tracking-[6px] text-white/90 -mt-4">
             LISTENING PARTY
           </div>
         </div>
 
-        {/* Event Info - Your requested text */}
-        <div className="mb-16">
-          <div className="text-2xl md:text-3xl font-medium tracking-wide text-white/90">
+        {/* Event Details - Your exact text, very prominent */}
+        <div className="mb-20">
+          <div className="text-3xl md:text-5xl font-medium tracking-widest text-white/95 mb-3">
             BULLY LISTENING PARTY
           </div>
-          <div className="text-xl md:text-2xl text-white/70 mt-2 tracking-widest">
+          <div className="text-2xl md:text-3xl text-white/80 tracking-[3px]">
             7:00 PM CDT &nbsp;•&nbsp; 8:00 PM EST
           </div>
-          <div className="mt-4 text-lg text-white/60">
+          <div className="mt-6 text-xl md:text-2xl text-white/70 font-light">
             BULLY by YE and KANYE WEST
           </div>
         </div>
 
-        {/* Big Play Button */}
+        {/* Huge Play Button */}
         <button
           onClick={togglePlay}
-          className="group relative mx-auto mb-16"
+          className="group relative mx-auto mb-20 block"
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-white/5 rounded-full blur-3xl scale-125 group-hover:scale-150 transition-all duration-500" />
+          <div className="absolute -inset-8 bg-white/5 rounded-full blur-3xl group-hover:bg-white/10 transition-all" />
           
-          <div className="relative w-[180px] h-[180px] border-4 border-white/90 rounded-full flex items-center justify-center hover:border-white transition-all hover:scale-105 active:scale-95">
+          <div className="relative w-56 h-56 border-[7px] border-white rounded-full flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-300">
             {isPlaying ? (
-              <Pause className="w-28 h-28 text-white" />
+              <Pause className="w-32 h-32" />
             ) : (
-              <Play className="w-28 h-28 text-white ml-5" />
+              <Play className="w-32 h-32 ml-6" />
             )}
           </div>
         </button>
 
         {/* Now Playing */}
-        <div className="mb-12">
-          <div className="uppercase text-xs tracking-[4px] text-white/50 mb-3">NOW PLAYING</div>
-          <div className="text-3xl font-semibold tracking-wide">BULLY — YE</div>
+        <div className="mb-16">
+          <div className="text-sm uppercase tracking-[4px] text-white/60 mb-2">NOW PLAYING IN ROBLOX</div>
+          <div className="text-4xl font-semibold tracking-wide">BULLY — YE</div>
         </div>
 
-        {/* Progress Bar */}
-        <div className="max-w-md mx-auto mb-16">
-          <div className="h-px bg-white/20 mb-3" />
-          <div className="h-0.5 bg-white w-full relative">
+        {/* Progress */}
+        <div className="max-w-lg mx-auto mb-20">
+          <div className="h-px bg-white/30 mb-4" />
+          <div className="relative h-1 bg-white/20 rounded">
             <div 
-              className="absolute top-0 left-0 h-full bg-white transition-all duration-1000"
+              className="absolute left-0 top-0 h-full bg-white rounded transition-all duration-1000"
               style={{ width: `${(currentTime / 3600) * 100}%` }}
             />
           </div>
-          <div className="flex justify-between text-xs font-mono text-white/50 mt-2 tracking-widest">
-            <div>{formatTime(currentTime)}</div>
-            <div>60:00</div>
+          <div className="flex justify-between text-xs font-mono text-white/50 mt-3">
+            <span>{formatTime(currentTime)}</span>
+            <span>60:00</span>
           </div>
         </div>
 
-        {/* Join Roblox Button */}
+        {/* Roblox Button */}
         <a
           href="https://www.roblox.com/"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block px-16 py-7 bg-white text-black font-bold text-2xl rounded-full hover:bg-white/90 active:scale-95 transition-all tracking-wide"
+          className="inline-block bg-white hover:bg-white/95 text-black font-bold text-2xl px-20 py-7 rounded-full transition-all hover:shadow-2xl"
         >
           JOIN ON ROBLOX
         </a>
 
-        <div className="mt-16 text-white/40 text-sm tracking-widest">
-          OFFICIAL LISTENING PARTY EXPERIENCE
+        <div className="mt-20 text-white/40 text-sm tracking-widest">
+          OFFICIAL ROBLOX LISTENING PARTY EXPERIENCE
         </div>
       </div>
 
-      {/* Bottom Star */}
-      <div className="absolute bottom-10 text-[100px] text-white/10 pointer-events-none">★</div>
+      {/* Bottom subtle star */}
+      <div className="absolute bottom-12 text-[120px] text-white/5 pointer-events-none">★</div>
 
       {/* Roblox Modal */}
       {showRoblox && (
-        <div className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center">
-          <div className="text-center">
-            <div className="text-8xl mb-8">🎮</div>
-            <div className="text-4xl font-bold mb-3">Entering the Experience...</div>
-            <div className="text-xl text-white/70">BULLY Listening Party on Roblox</div>
-            
+        <div className="fixed inset-0 bg-black/95 z-[100] flex items-center justify-center">
+          <div className="text-center px-8">
+            <div className="text-8xl mb-10">🎮</div>
+            <div className="text-5xl font-black mb-4">ENTERING ROBLOX...</div>
+            <div className="text-2xl text-white/80">BULLY Listening Party</div>
             <button 
               onClick={() => setShowRoblox(false)}
-              className="mt-12 text-sm text-white/60 hover:text-white underline"
+              className="mt-16 text-white/70 hover:text-white text-lg underline"
             >
-              Close preview
+              Close
             </button>
           </div>
         </div>
