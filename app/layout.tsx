@@ -5,8 +5,8 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'BULLY Listening Party • YE',
-  description: 'BULLY by YE and Kanye West • Official Roblox Listening Party',
+  title: 'BULLY Listening Party',
+  description: 'BULLY by YE and Kanye West • Roblox Listening Party',
 };
 
 export default function RootLayout({
